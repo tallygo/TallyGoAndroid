@@ -106,7 +106,8 @@ public class MainActivity extends TGBaseActivity implements TGNavigationFragment
             public void onNoInternetFailure(long retryDelay) {
                 //the retry delay is in milliseconds and will increase as we retry the connection,
                 //in your own application feel free to retry initialization during this time
-                TGToastHelper.showLong(getBaseContext(), "No internet! Retrying in: " + retryDelay / 1000);
+                TGToastHelper.showLong(getBaseContext(), "No internet! Retrying in: "
+                        + retryDelay / 1000);
             }
 
             @Override
@@ -140,7 +141,7 @@ public class MainActivity extends TGBaseActivity implements TGNavigationFragment
         //current date
         Date date = new Date();
 
-        //create the request with the time supplied being departure time
+        //create the request with the date/time supplied as the departure time
         TGRouteRequest routeRequest = new TGRouteRequest(waypoints, date,
                 TGRouteRequest.TGRouteRequestType.DEPARTURE_TIME);
 
@@ -164,7 +165,7 @@ public class MainActivity extends TGBaseActivity implements TGNavigationFragment
      * These are override methods from TGNavigationFragment.Container. The container interface
      * allows children of this activity to make calls back to this activity to show and hide
      * navigation. If you would like your activity to be aware of these calls then implement
-     * this container.
+     * this container (You may also implement this container on parent fragments to the same effect)
      */
 
     @Override

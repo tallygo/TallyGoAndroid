@@ -64,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
      * And presto! You have navigation!
      *
      * Note that this kills the current activity, and brings the user into the fully pre-built
-     * TallyGo search and navigation system. While you could build some logic like this, it is
-     * advised that you check out our other implementations for further customization.
+     * TallyGo search and navigation system. While you could build some logic around this, it
+     * would probably be easier that you check out our other implementations for further
+     * customization.
      */
     private void startTallyGo() {
         Intent intent = new Intent(this, TallyGoActivity.class);
