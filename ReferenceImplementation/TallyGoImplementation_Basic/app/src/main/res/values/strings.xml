@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">TallyGoImplementation_Basic</string>
 
-    <!--<string name="tallygo_access_token">YOUR_SDK_ACCESS_TOKEN</string>-->
-    <string name="tallygo_access_token">f0bca13a854bacdb7bbf93567a40d354</string>
+    <string name="tallygo_access_token">YOUR_SDK_ACCESS_TOKEN</string>
     <string name="start_tallygo">Start TallyGo</string>
 
 </resources>
