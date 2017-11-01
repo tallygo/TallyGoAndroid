@@ -178,9 +178,14 @@ public class MainActivity extends TGBaseActivity implements TGNavigationFragment
     public void onShowNavigationFragment(String routeJsonString) {
         startTallyGoButton.setVisibility(View.GONE);
 
+        boolean simulated = false;
+        boolean takeWrongTurn = false;
+        boolean clickMapToUpdatePosition = false;
+
         //this is where the navigation fragment is started
         TGNavigationFragment fragment =
-                TGNavigationFragment.newInstance(routeJsonString);
+                TGNavigationFragment.newInstance(routeJsonString, simulated, takeWrongTurn,
+                        clickMapToUpdatePosition);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fl_main, fragment, TGNavigationFragment.TAG);
         fragmentTransaction.addToBackStack(TGNavigationFragment.TAG);
