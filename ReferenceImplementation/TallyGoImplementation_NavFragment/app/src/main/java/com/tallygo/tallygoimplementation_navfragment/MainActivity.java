@@ -34,10 +34,10 @@ import android.widget.Button;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.tallygo.tallygoandroid.activities.TGBaseActivity;
 import com.tallygo.tallygoandroid.activities.navigation.TGNavigationFragment;
-import com.tallygo.tallygoandroid.endpoint.navigation.TGNavigationEndpoint;
-import com.tallygo.tallygoandroid.endpoint.navigation.TGRouteRequest;
-import com.tallygo.tallygoandroid.endpoint.navigation.TGRouteResponse;
 import com.tallygo.tallygoandroid.sdk.TallyGo;
+import com.tallygo.tallygoandroid.sdk.navigation.TGNavigationEndpoint;
+import com.tallygo.tallygoandroid.sdk.navigation.TGRouteRequest;
+import com.tallygo.tallygoandroid.sdk.navigation.TGRouteResponse;
 import com.tallygo.tallygoandroid.utils.TGToastHelper;
 import com.tallygo.tallygoandroid.utils.TGUtils;
 
