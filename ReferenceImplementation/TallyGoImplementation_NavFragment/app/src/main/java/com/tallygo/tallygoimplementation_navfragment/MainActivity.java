@@ -183,9 +183,8 @@ public class MainActivity extends TGBaseActivity implements TGNavigationFragment
         boolean clickMapToUpdatePosition = false;
 
         //this is where the navigation fragment is started
-        TGNavigationFragment fragment =
-                TGNavigationFragment.newInstance(routeJsonString, simulated, takeWrongTurn,
-                        clickMapToUpdatePosition);
+        TGNavigationFragment fragment = TGNavigationFragment.newInstance(routeJsonString,
+                simulated, takeWrongTurn, clickMapToUpdatePosition);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fl_main, fragment, TGNavigationFragment.TAG);
         fragmentTransaction.addToBackStack(TGNavigationFragment.TAG);

@@ -1,6 +1,6 @@
 # TallyGo Android SDK `BETA`
 
-The TallyGo Android SDK enables you to embed state-of-the-art real-time navigation into your Android app with virtually no development effort. It is currently targeted at the most recent SDK 26, with compatibility back to SDK 17 and is optimized for both phone and tablet.
+The TallyGo Android SDK enables you to embed state-of-the-art real-time navigation into your Android app with virtually no development effort.
 
 ---
 
