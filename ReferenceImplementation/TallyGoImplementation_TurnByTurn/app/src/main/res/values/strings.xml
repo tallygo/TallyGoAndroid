@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TallyGoImplementation_TurnByTurn</string>
+
+    <string name="tallygo_access_token">YOUR_SDK_ACCESS_TOKEN</string>
+    <string name="start_tallygo">Start TallyGo</string>
+
+</resources>
