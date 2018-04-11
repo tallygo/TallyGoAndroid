@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation('com.tallygo:tallygo-android:1.3.105@aar') {
+    implementation('com.tallygo:tallygo-android:2.0.0@aar') {
         transitive = true
     }
 }

@@ -30,7 +30,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.tallygo.tallygoandroid.activities.tallygo.TallyGoActivity;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.tallygo.tallygoandroid.activities.TallyGoActivity;
+import com.tallygo.tallygoandroid.sdk.TGMutableConfiguration;
+import com.tallygo.tallygoandroid.sdk.TallyGo;
 
 /**
  * This activity shows the most basic way to implement TallyGo's SDK. All we need to do is launch
@@ -65,14 +68,28 @@ public class MainActivity extends AppCompatActivity {
      * Note that this kills the current activity, and brings the user into the fully pre-built
      * TallyGo search and navigation system. While you could build some logic around this, it would
      * probably be easier that you check out our other implementations for further customization
-     * (such as {@link com.tallygo.tallygoandroid.activities.turnbyturn.TGTurnByTurnActivity})
      *
      * You can find further examples in our reference implementation repo
      * @see <a href="https://github.com/tallygo/TallyGoAndroid">https://github.com/tallygo/TallyGoAndroid</a>
      */
     private void startTallyGo() {
+        enableSimulatedDrive();
+
         Intent intent = new Intent(this, TallyGoActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void enableSimulatedDrive() {
+        TGMutableConfiguration configuration = TallyGo.getInstance(this).getMutableConfiguration();
+
+        //simulate location
+        LatLng simulatedLocation = new LatLng(32.6809d, -117.1784d); //hotel sd
+        configuration.setSimulatedLocation(simulatedLocation);
+
+        //simulate the drive
+        configuration.getSimulateNavigationSettings().setSimulated(true);
+
+        TallyGo.getInstance(this).updateConfiguration(configuration);
     }
 }
