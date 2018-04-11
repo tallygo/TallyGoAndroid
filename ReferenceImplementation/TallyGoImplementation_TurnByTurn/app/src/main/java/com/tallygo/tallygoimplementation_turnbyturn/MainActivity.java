@@ -7,12 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.tallygo.tallygoandroid.activities.turnbyturn.TGTurnByTurnActivity;
-import com.tallygo.tallygoandroid.fragments.navigation.base.TGBaseTurnByTurnFragment;
+import com.tallygo.tallygoandroid.activities.TGTurnByTurnActivity;
+import com.tallygo.tallygoandroid.sdk.TGMutableConfiguration;
+import com.tallygo.tallygoandroid.sdk.TallyGo;
 import com.tallygo.tallygoandroid.sdk.navigation.TGRouteRequest;
+import com.tallygo.tallygoandroid.utils.TGBundleKeys;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,35 +33,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startTurnByTurn() {
-        //you can use this line to get your current location if you would like
-        //LatLng currentLocation = TGUtils.getRealCurrentCoordinate(getBaseContext());
+        enableSimulatedDrive();
 
         LatLng currentLocation = new LatLng(32.6809d, -117.1784d); //Hotel Del Coronado
         LatLng destinationCoordinate = new LatLng(32.7306181d,-117.1462286d); //SD Zoo
-
         List<LatLng> waypoints = new ArrayList<>();
         waypoints.add(currentLocation);
         waypoints.add(destinationCoordinate);
 
-        //current date
-        Date date = new Date();
-
         //create the request with the date/time supplied as the departure time
-        TGRouteRequest routeRequest = new TGRouteRequest(waypoints, date,
-                TGRouteRequest.TGRouteRequestType.DEPARTURE_TIME);
-
-        //create options to pass to the turn-by-turn activity
-        TGBaseTurnByTurnFragment.Options options = new TGBaseTurnByTurnFragment.Options();
-        options.putRouteRequest(routeRequest);
-
-        //we simulate the route, so you don't have to drive to test it
-        options.putSimulated(true);
-
-        //also try this if you would like to control how the simulation moves
-        //options.putClickToUpdate(true);
+        TGRouteRequest routeRequest = new TGRouteRequest.Builder(waypoints).build();
 
         Intent intent = new Intent(this, TGTurnByTurnActivity.class);
-        intent.putExtra(TGBaseTurnByTurnFragment.Options.TG_BASE_TURN_BY_TURN_OPTIONS_KEY, options);
+        intent.putExtra(TGBundleKeys.ROUTE_REQUEST, routeRequest);
         startActivity(intent);
+        finish();
+    }
+
+    private void enableSimulatedDrive() {
+        TGMutableConfiguration configuration = TallyGo.getInstance(this).getMutableConfiguration();
+
+        //simulate location
+        LatLng simulatedLocation = new LatLng(32.6809d, -117.1784d); //Hotel Del Coronado
+        configuration.setSimulatedLocation(simulatedLocation);
+
+        //simulate the drive
+        configuration.getSimulateNavigationSettings().setSimulated(true);
+
+        TallyGo.getInstance(this).updateConfiguration(configuration);
     }
 }
